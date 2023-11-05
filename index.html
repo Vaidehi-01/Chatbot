@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+Kawi:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Book recommendation chatbot</title>
+  </head>
+  <body>
+    <script src="./parallax.js"></script>
+    <button onclick="openChatBot()" class="chatbotbutton">
+      <img
+        src="https://cdn1.iconfinder.com/data/icons/smart-speaker-1/2000/smart_speaker_chat_bot-01-01-512.png"
+        alt=""
+      />
+    </button>
+    <div class="container">
+      <div class="chatbox" id="chatbox">
+        <div class="header">
+          <h4>Book recommendation chatbot</h4>
+        </div>
+        <div class="body" id="chatbody">
+          <div class="message">
+            <p class="text">
+              Hello, I am a book recommendation chatbot. I can help you find
+              your next book to read. What is your name?
+            </p>
+          </div>
+        </div>
+        <div class="footer">
+          <input type="text" id="userInput" placeholder="Type your message" />
+          <button id="send">
+            <i
+              class="fa fa-paper-plane"
+              aria-hidden="true"
+              style="color: grey"
+            ></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <script src="./chatbot.js"></script>
+  </body>
+</html>

@@ -1,0 +1,125 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+body{
+  font-family: 'Noto Sans Kawi', sans-serif;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+.parent {
+  width: 100%;
+  height: 150vh;
+  color: #fff;
+  text-shadow: 0 0 5px #000;
+  font-family: tahoma;
+  text-align: center;
+  line-height: 180%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.parent p {
+  padding: 25px;
+}
+/* chatbot styles begin here */
+.chatbotbutton {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  width: 50px;
+  height: 50px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 5px #000;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 999;
+  border: none;
+}
+.chatbotbutton>img{
+  width: 100%;
+  height: 100%;
+}
+.container {
+  position: fixed;
+  top: -60px;
+  left: -60px;
+  z-index: 9999;
+  background-color: transparent;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+.chatbox {
+  background: white;
+  border-radius: 10px;
+  max-width: 300px;
+  min-height: 500px;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+.chatbox>.header{
+  padding: 15px;
+  flex:0.1;
+  background-color: #E65200;
+  color: #fff;
+}
+.chatbox>.body{
+  flex:1;
+  padding: 15px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap:20px;
+  overflow: auto;
+  max-height: 400px;
+}
+.chatbox>.body>.message{
+  display: flex;
+  align-items: center;
+  color: black;
+  background-color: whitesmoke;
+  padding: 5px;
+  font-size: 13px;
+  box-shadow: 0px 0px 1.5px 0.1px grey;
+  border-radius: 5px;
+}
+.chatbox>.body>.message>.text{
+  padding: 5px;
+  font-size: 13px;
+  width: 100%;
+  word-wrap: break-word;
+}
+.chatbox>.footer{
+  flex:0;
+  padding: 15px;
+  color: #fff;
+  box-shadow: 0px 0px 1px 0px grey;
+  display: flex;
+}
+.chatbox>.footer>input{
+  width: 100%;
+  height: 40px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  padding: 0 10px;
+}
+.chatbox>.footer>#send{
+  width: 40px;
+  height: 40px;
+  border: none;
+  outline: none;
+  color: #fff;
+  cursor: pointer;
+}
