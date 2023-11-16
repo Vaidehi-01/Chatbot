@@ -21,7 +21,7 @@ python -m venv .venv
 ```
 ### install the requirements
 ```
-pip install -r requriements.txt
+pip install -r requirements.txt
 ```
 ### run the application
 ```
