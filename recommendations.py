@@ -76,17 +76,19 @@ def get_index_from_name(name):
 
 def get_id_from_partial_name(partial):
     all_books_names = list(df.title.values)
+    l = []
     for name in all_books_names:
         if partial in name:
-            print(name, all_books_names.index(name))
+            l.append((name, all_books_names.index(name)))
+    return l
 
 
-def find_similar_books_by_author(df, authors):
+def find_similar_books_by_author(authors):
     similar_books = df[df["authors"] == authors]["title"].tolist()
     return similar_books
 
 
-def find_similar_books_by_publisher(df, publisher):
+def find_similar_books_by_publisher(publisher):
     similar_books = df[df["publisher"] == publisher]["title"].tolist()
     return similar_books
 
@@ -100,16 +102,16 @@ def print_similar_books(query=None, id=None, authors=None, publisher=None):
         for id in indices[found_id][1:]:
             print(df.iloc[id]["title"])
     if authors:
-        similar_books = find_similar_books_by_author(df, authors)
+        similar_books = find_similar_books_by_author(authors)
         for book_title in similar_books:
             print(book_title)
     if publisher:
-        similar_books = find_similar_books_by_publisher(df, publisher)
+        similar_books = find_similar_books_by_publisher(publisher)
         for book_title in similar_books:
             print(book_title)
 
 
-def recommend_books_by_average_rating(df, num_recommendations=5):
+def recommend_books_by_average_rating(num_recommendations=5):
     top_rated_books = (
         df.sort_values(by="average_rating", ascending=False)["title"]
         .head(num_recommendations)
@@ -118,25 +120,26 @@ def recommend_books_by_average_rating(df, num_recommendations=5):
     return top_rated_books
 
 
-get_id_from_partial_name("Harry Potter and the ")
+# get_id_from_partial_name("Harry Potter and the ")
 
-get_id_from_partial_name("Memoirs ")
+# get_id_from_partial_name("Memoirs ")
 
-get_index_from_name("A Short History of Nearly Everything")
+# get_index_from_name("A Short History of Nearly Everything")
 
-get_index_from_name("Letters of Ayn Rand")
+# get_index_from_name("Letters of Ayn Rand")
 
-print_similar_books(
-    query="Harry Potter and the Order of the Phoenix (Harry Potter  #5)"
-)
+# print_similar_books(
+#     query="Harry Potter and the Order of the Phoenix (Harry Potter  #5)"
+# )
 
-print_similar_books(authors="Bill Bryson")
+# print_similar_books(authors="Bill Bryson")
 
-print_similar_books(authors="J.R.R. Tolkien")
+# print_similar_books(authors="J.R.R. Tolkien")
 
-# Assuming 'df' is your DataFrame
-top_rated_books = recommend_books_by_average_rating(df, num_recommendations=10)
+# # Assuming 'df' is your DataFrame
+# top_rated_books = recommend_books_by_average_rating(num_recommendations=10)
 
-print("Top 10 Books by Average Rating:")
-for title in top_rated_books:
-    print(title)
+# print("Top 10 Books by Average Rating:")
+# for title in top_rated_books:
+#     print(title)
+print(find_similar_books_by_author("J.K. Rowling"))
