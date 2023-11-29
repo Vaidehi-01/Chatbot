@@ -112,34 +112,15 @@ def print_similar_books(query=None, id=None, authors=None, publisher=None):
 
 
 def recommend_books_by_average_rating(num_recommendations=5):
-    top_rated_books = (
-        df.sort_values(by="average_rating", ascending=False)["title"]
-        .head(num_recommendations)
-        .tolist()
+    top_rated_books = df.sort_values(by="average_rating", ascending=False)[
+        ["title", "average_rating"]
+    ].head(num_recommendations)
+
+    top_rated_books["combined"] = (
+        top_rated_books["title"]
+        + " - ["
+        + top_rated_books["average_rating"].astype(str)
+        + "]"
     )
-    return top_rated_books
-
-
-# get_id_from_partial_name("Harry Potter and the ")
-
-# get_id_from_partial_name("Memoirs ")
-
-# get_index_from_name("A Short History of Nearly Everything")
-
-# get_index_from_name("Letters of Ayn Rand")
-
-# print_similar_books(
-#     query="Harry Potter and the Order of the Phoenix (Harry Potter  #5)"
-# )
-
-# print_similar_books(authors="Bill Bryson")
-
-# print_similar_books(authors="J.R.R. Tolkien")
-
-# # Assuming 'df' is your DataFrame
-# top_rated_books = recommend_books_by_average_rating(num_recommendations=10)
-
-# print("Top 10 Books by Average Rating:")
-# for title in top_rated_books:
-#     print(title)
-print(find_similar_books_by_author("J.K. Rowling"))
+    combined_books = top_rated_books["combined"].tolist()
+    return combined_books
