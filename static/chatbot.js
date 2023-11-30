@@ -59,15 +59,20 @@ function chatBotSendList(data) {
 }
 
 async function continueConversation(continue_id, query) {
+  console.log(query);
   switch (continue_id) {
     case "push_questions": {
       chatBotSendList(questions);
       break;
     }
     default:
-      await fetch(
-        `http://127.0.0.1:5000/recommendations/${continue_id}/${query}`
-      )
+      await fetch(`http://127.0.0.1:5000/recommendations/${continue_id}`, {
+        method: "POST",
+        body: JSON.stringify({ query: query }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
         .then((response) => {
           return response.json();
         })
@@ -92,6 +97,8 @@ function sendMsg() {
   chatbody.appendChild(message);
   const messageValue = messageTextBox.value;
   const splitted = messageValue.split(",");
+  console.log(splitted);
+  console.log(splitted[1].trim());
   if (splitted.length == 2) {
     continueConversation(splitted[0].trim(), splitted[1].trim());
     messageTextBox.value = "";
