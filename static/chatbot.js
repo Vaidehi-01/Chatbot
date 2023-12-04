@@ -65,7 +65,7 @@ async function continueConversation(continue_id, query) {
       break;
     }
     default:
-      await fetch(`http://127.0.0.1:5000/recommendations/${continue_id}`, {
+      await fetch(`https://bookbuddy-u2y7.onrender.com/recommendations/${continue_id}`, {
         method: "POST",
         body: JSON.stringify({ query: query }),
         headers: {
