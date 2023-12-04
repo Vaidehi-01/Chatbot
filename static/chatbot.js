@@ -59,7 +59,6 @@ function chatBotSendList(data) {
 }
 
 async function continueConversation(continue_id, query) {
-  console.log(query);
   switch (continue_id) {
     case "push_questions": {
       chatBotSendList(questions);
@@ -97,8 +96,6 @@ function sendMsg() {
   chatbody.appendChild(message);
   const messageValue = messageTextBox.value;
   const splitted = messageValue.split(",");
-  console.log(splitted);
-  console.log(splitted[1].trim());
   if (splitted.length == 2) {
     continueConversation(splitted[0].trim(), splitted[1].trim());
     messageTextBox.value = "";
