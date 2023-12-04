@@ -1,6 +1,8 @@
 # BOOK RECOMMENDATION CHATBOT
 <p>A chatbot designed to assist book enthusiasts in discovering book recommendations based on author, publisher, or title preferences. Utilizes KNN algorithm for recommendation.</p>
+
 ### create a virtual env
+
 ```
 python3 -m venv .venv
 
